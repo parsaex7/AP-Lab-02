@@ -70,13 +70,28 @@ public class Lab {
     {
         return student;
     }
-    
+    public void EnrollStudent(Student std)
+    {
+        if (CurrentSize == MaxSize)
+        {
+            System.out.println("The Class Is Full");
+            return;
+        }
+        student[CurrentSize] = std;
+        CurrentSize++;
+    }
+    public void CalAvg()
+    {
+        double sum = 0;
+        for (int i = 0; i < CurrentSize; i++)
+            sum += student[i].GetGrade();
+        AvgGrade = sum / CurrentSize;
+    }
     public void PrintLabInfo()
     {
-        for (Student s : student)
+        for (int i = 0; i < CurrentSize; i++)
         {
-            s.PrintStudentInfo();
-            System.out.println();
+            student[i].PrintStudentInfo();
         }
         System.out.println("Teacher Name : " + TeacherName);
         System.out.println("Day of Class : " + DayOfWeek);
